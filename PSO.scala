@@ -36,7 +36,7 @@ class PSO(val f: Array[Double] => Double, val nPart: Int, val dim: Int,
         if (X(i)(j) < mini) {
           X(i)(j) = mini
         }
-        if (X(i)(j) > maxi) {
+        else if (X(i)(j) > maxi) {
           X(i)(j) = maxi
         }
       }
