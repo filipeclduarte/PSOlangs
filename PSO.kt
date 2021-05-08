@@ -1,7 +1,6 @@
 import org.jetbrains.kotlinx.multik.api.*
 import org.jetbrains.kotlinx.multik.ndarray.data.*
 import org.jetbrains.kotlinx.multik.ndarray.operations.*
-//import org.jetbrains.kotlinx.multik.default.DefaultMath.argMin
 import kotlin.random.Random
 
 class PSO(val f: (MultiArray<Double, D1>) -> Double, val nPart: Int, val dim: Int, val w: Double, val c1: Double,
@@ -16,8 +15,8 @@ class PSO(val f: (MultiArray<Double, D1>) -> Double, val nPart: Int, val dim: In
 
     fun atualizaVel() {
         for (i in 0 until nPart){
-            val r1 = (maxi - mini) * Random.nextDouble() + mini
-            val r2 = (maxi - mini) * Random.nextDouble() + mini
+            val r1 = Random.nextDouble()
+            val r2 = Random.nextDouble()
             V[i] = (V[i] * w) + (c1 * r1 * (pBest[i] - X[i])) + (c2 * r2 * (X[gBest] - X[i]))
         }
     }

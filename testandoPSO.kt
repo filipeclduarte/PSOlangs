@@ -1,10 +1,5 @@
-import org.jetbrains.kotlinx.multik.api.*
 import org.jetbrains.kotlinx.multik.ndarray.data.*
 import org.jetbrains.kotlinx.multik.ndarray.operations.*
-import java.lang.Math
-import kotlin.math.cos
-import kotlin.math.exp
-import kotlin.math.sqrt
 
 fun main(){
 
@@ -34,17 +29,14 @@ fun main(){
     val start =  System.currentTimeMillis()
     var t = 0
     val nPart = 30
-    while (t < 100){
         var iter = 0
-        val modeloPSO = PSO({ squareFun(it) }, nPart, 5, 0.75, 1.65, 1.65, -3.5, 3.5)
-        while (iter < 100) {
-            modeloPSO.atualizaVel()
-            modeloPSO.atualizaPart()
-            modeloPSO.fitness()
-            println("iter $iter - ${modeloPSO.gBestValue}")
-            iter += 1
-        }
-        t += 1
+    val modeloPSO = PSO({ squareFun(it) }, nPart, 5, 0.75, 1.5, 1.5, -5.12, 5.12)
+    while (iter < 100) {
+        modeloPSO.atualizaVel()
+        modeloPSO.atualizaPart()
+        modeloPSO.fitness()
+        println("iter $iter - ${modeloPSO.gBestValue}")
+        iter += 1
     }
     val end = System.currentTimeMillis()
     println("Time exec: ${end - start}")
