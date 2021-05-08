@@ -88,7 +88,7 @@ int main(){
     int t = 0;
     int iter2 = 0;
     while (t < 100){
-        std::shared_ptr<PSO> pPSO(new PSO(30, 5, 0.75, 1.65, 1.65, -3.5, 3.5, &square));
+        std::shared_ptr<PSO> pPSO(new PSO(30, 5, 0.75, 1.5, 1.5, -5.12, 5.12, &square));
         // std::shared_ptr<PSO> pPSO(new PSO(100, 10, 0.75, 1.65, 1.65,-32.768, 32.768, &ackley));
         // PSO pPSO(100, 10, 0.75, 1.65, 1.65,-32.768, 32.768, &ackley);
         iter2 = 0;
