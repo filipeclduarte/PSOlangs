@@ -9,7 +9,7 @@ def main():
     
     while t < 100:
         Iter = 0
-        pPSO = PSO(30, 5, 0.75,1.65, 1.65, -3.5, 3.5, square)
+        pPSO = PSO(30, 5, 0.75,1.5, 1.5, -5.12, 5.12, square)
         
         while Iter < 100: 
             pPSO.atualiza_part()
