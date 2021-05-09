@@ -1,23 +1,18 @@
 package com.company;
 
 import java.util.Random;
+import java.util.function.Function;
 
 public class PSO {
     int nPart, dim, gBest;
-    double w, c1, c2, mini, maxi, gBestValue;
+    double w, c1, c2, mini, maxi;
+    Double gBestValue;
     double[][] X, V, pBest;
-    double[] fit, pBestValue;
+    Double[] fit, pBestValue;
     Random rand = new Random();
+    Function< double[], Double> f;
 
-    static double f(double[] x) {
-        double res = 0.0;
-        for (int i = 0; i < x.length; i++) {
-            res += x[i] * x[i];
-        }
-        return res;
-    }
-
-    PSO(int numPart, int Dim, double W, double C1, double C2, double Mini, double Maxi) {
+    PSO(int numPart, int Dim, double W, double C1, double C2, double Mini, double Maxi, Function<double[], Double> F) {
         nPart = numPart;
         dim = Dim;
         w = W;
@@ -25,11 +20,12 @@ public class PSO {
         c2 = C2;
         mini = Mini;
         maxi = Maxi;
+        f = F;
         X = new double[nPart][dim];
         V = new double[nPart][dim];
         pBest = new double[nPart][dim];
-        fit = new double[nPart];
-        pBestValue = new double[nPart];
+        fit = new Double[nPart];
+        pBestValue = new Double[nPart];
         gBestValue = 1.0e+10;
         for (int i = 0; i < nPart; i++) {
             for (int j = 0; j < dim; j++) {
@@ -37,8 +33,8 @@ public class PSO {
                 V[i][j] = 0.0;
                 pBest[i][j] = X[i][j];
             }
-            fit[i] = f(X[i]);
-            pBestValue[i] = f(pBest[i]);
+            fit[i] = f.apply(X[i]);
+            pBestValue[i] = f.apply(pBest[i]);
             if (fit[i] < gBestValue) {
                 gBestValue = fit[i];
                 gBest = i;
@@ -77,7 +73,7 @@ public class PSO {
 
     void fitness(){
         for (int i = 0; i < nPart; i++) {
-            fit[i] = f(X[i]);
+            fit[i] = f.apply(X[i]);
         }
         for (int i = 0; i < nPart; i++) {
             if(fit[i] < pBestValue[i]){
