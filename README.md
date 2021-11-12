@@ -3,7 +3,8 @@ Particle Swarm Optimization implemented on several programming languages
 
 * C++
 * C#
-* java
+* Java
+* Julia
 * Kotlin
 * Scala
 * Python
