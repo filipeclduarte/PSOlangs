@@ -12,7 +12,7 @@ end
 
 function fitValuesCalc(f, X, fitValues)
     for i in 1:size(X, 1)
-        fitValues[i] = f(X[i])
+        fitValues[i] = f(X[i,:])
     end
     return fitValues
 end
@@ -47,7 +47,7 @@ function evaluate(f, X, fitValues, pBest, pBestValues, gBest, gBestValue)
     fitValues = fitValuesCalc(f, X, fitValues)
     for (i, el) in enumerate(fitValues)
         if el < pBestValues[i]
-            pBest[i] = X[i]
+            pBest[i,:] = X[i,:]
             pBestValues[i] = el
         end
         if el < gBestValue
